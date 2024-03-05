@@ -1,4 +1,4 @@
-# W5B - Variables 
+# W5b - Variables 
 
 ```assembly
 
@@ -20,3 +20,8 @@ section .bss                 ;  Section for uninitialized data
 section .data                ;  Start of the section for initialized data
 var1 DD 10                   ;  Declare var1 as doubleword, initialize to 10 
 var2 DD 15                   ;  Declare var2 as doubleword, initialize to 15
+```
+
+What were your challenges in performing the lab (from design to the implementation phases)?
+
+The challenges that I experienced working with the lab related to allocating storage space for initialized data. Originally I believed that I could initialize var1 with DB and assign the value 10 to it. It turns out that I could not - copying the value of var1 into the eax register was problematic and returned a large random value when compiled with GDB. This is because the eax/ebx registers are both 32 bit respectively. DB is used to declare a byte-sized variable which is only 8 bits. Once I changed DB to DD, var1 is declared as a doubleword-sized variable of size 32 bits to successfully match the size of the eax and ebx registers.
