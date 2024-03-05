@@ -24,7 +24,8 @@ caesar DB 'I came,', 0xa, 'I saw,', 0xa, 'I conquered.', 0xa
 len equ $ - caesar      ;  Calculate the length of the message
 
 ```
-What were your challenges in performing the lab (from design to the implementation phases)?
+
+## What were your challenges in performing the lab (from design to the implementation phases)?
 
 I found designing this code was a fun first foray with Assembly code. The difficulties that I experienced were mainly related to understanding the new syntax and the necessary commands in order to get the code to work. I learned the purpose of section .text, start, and section .data, as well as the commands for sys_write, standard output, calling the kernel, and sys_exit! I also needed to make sure to calculate the length of the message. 
 
