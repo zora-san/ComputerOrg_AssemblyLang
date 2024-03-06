@@ -46,4 +46,10 @@ var2 DD 10                      ;  initialize doubleword var2 to 10
 var3 DD 9                       ;  initialize doubleword var3 to 9
 var4 DD 10                      ;  initialize doubleword var4 to 10
 
-```assembly
+```
+
+## What were your challenges in performing the lab (from design to the implementation phases)?
+
+The main challenges I had when completing this lab were related to the usage of imul. I realized that I must use eax instead of al because imul can't directly multiply a value to store in an 8 bit register because the result could be larger than what an 8 bit register can store. 
+
+When using idiv, I put "idiv ebx" to divide the value in register eax by ebx. By making debugging my mistakes I learn that we put the denominator next to idiv, but the divided result is still stored in eax. 
