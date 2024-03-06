@@ -31,7 +31,7 @@ _start:
         imul eax, 2             ;  multiply 2 by value in eax: 14
         mov ebx, [var2]         ;  copy the value of var2 in ebx: 10
         sub ebx, 3              ;  subtract 3 from the value in ebx: 7
-        idiv ebx                ;  divide the value of eax by the value in ebx: 14/7 = 2
+        div ebx                ;  divide the value of eax by the value in ebx: 14/7 = 2
         mov [result], eax       ;  copy the value of eax into value of result 
 
         mov eax, 1              ;  sys_exit     
