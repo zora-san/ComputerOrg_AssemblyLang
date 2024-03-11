@@ -11,7 +11,7 @@ section .text
 _start:
         mov eax, [result]
         xor eax, eax
-        test eax, -1
+        test eax, eax 
 
         jz is_zero              ; jump if zero flag is set 
                                 ; if the zero flag is not set, print "Not zero" and exit the program
@@ -23,7 +23,7 @@ _start:
 
         jmp exit
 
-is_zero:                        ;if zero flag is set, print "Number is zero" and exit the program
+is_zero:                        ; if zero flag is set, print "Number is zero" and exit the program
 
         mov eax, SYS_WRITE      
         mov ebx, STDOUT         
@@ -35,7 +35,7 @@ is_zero:                        ;if zero flag is set, print "Number is zero" and
 
 exit:
         mov eax, SYS_EXIT  
-        int PROC      ; kernel for system call
+        int PROC      
 
 section .data
         result DD 789
@@ -46,3 +46,8 @@ section .data
         msg_nz DB 'Not zero', 0x0a
         len2 equ $ - msg_nz
 ```
+
+## What were your challenges in performing the lab (from design to the implementation phases)? 
+The challenges I encountered included making sure I had no duplicate code. 
+I also nedded to make sure I was using int 0x80 to call the kernel after printing, to invoke the requested operation.
+
