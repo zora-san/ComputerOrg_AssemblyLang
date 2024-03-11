@@ -49,5 +49,5 @@ section .data
 
 ## What were your challenges in performing the lab (from design to the implementation phases)? 
 The challenges I encountered included making sure I had no duplicate code. 
-I also nedded to make sure I was using int 0x80 to call the kernel after printing, to invoke the requested operation.
+I also needed to make sure I was using int 0x80 to call the kernel after printing, to invoke the requested operation.
 
