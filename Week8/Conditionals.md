@@ -1,4 +1,4 @@
-# Week8 - Conditional Instructions
+# W8 - Conditional Instructions
 
 ## 1. Generate a sequence of even or odd numbers up to 20.
 ```assembly
