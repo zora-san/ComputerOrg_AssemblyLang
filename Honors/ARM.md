@@ -33,7 +33,7 @@ Assembly language for ARM processors differs significantly from that of Intel pr
 
 To write assembly code for ARM processors, one must understand these differences and adhere to ARM's instruction set architecture and syntax conventions. Additionally, assembly code written for Intel processors cannot be directly ported to ARM processors without significant modifications due to these differences in architecture and instruction set.
 
-**2. Convert the Intel 32-bit processor assembly code to ARM processor assembly code, and execute.**
+**2. Convert the Intel 32-bit processor assembly code to ARM processor assembly code, and execute.**  
 $var4 = (var1+var2)*var3$
 
 ```assembly
