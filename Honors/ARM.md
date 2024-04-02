@@ -9,29 +9,13 @@ Perform the following tasks:
 
 **1. How different is assembly language for ARM processors compared to Intel processors?**
 
-Assembly language for ARM processors differs significantly from that of Intel processors due to differences in instruction set architecture (ISA), register usage, addressing modes, and syntax.
+The assembly language utilized for ARM processors stands in great contrast to the assembly language of Intel processors. We will dive into the variations across instruction set architecture (ISA), register usage, addressing modes, and syntax.
 
-1. **Instruction Set Architecture (ISA)**:
-   - ARM processors use a RISC (Reduced Instruction Set Computing) architecture, while Intel processors use a CISC (Complex Instruction Set Computing) architecture.
-   - RISC architectures, such as ARM, typically have simpler and more uniform instructions compared to CISC architectures like Intel.
-   - ARM instructions are designed to perform specific tasks efficiently, resulting in a streamlined instruction set.
-   
-2. **Register Usage**:
-   - ARM processors have a smaller number of general-purpose registers compared to Intel processors.
-   - ARM assembly language often uses register names like R0, R1, etc., while Intel assembly language uses names like EAX, EBX, etc.
-   - Register conventions and usage may differ between ARM and Intel assembly languages.
-
-3. **Addressing Modes**:
-   - ARM assembly language supports fewer addressing modes compared to Intel assembly language.
-   - ARM assembly often uses load/store architecture, where operations are performed between registers rather than directly on memory.
-   - Addressing modes in ARM assembly may be more restricted compared to Intel assembly.
-
-4. **Syntax**:
-   - ARM assembly language syntax differs from Intel assembly language syntax.
-   - Instructions and directives in ARM assembly may have different names and formats compared to Intel assembly.
-   - Comments and formatting conventions may also differ between ARM and Intel assembly languages.
-
-To write assembly code for ARM processors, one must understand these differences and adhere to ARM's instruction set architecture and syntax conventions. Additionally, assembly code written for Intel processors cannot be directly ported to ARM processors without significant modifications due to these differences in architecture and instruction set.
+   In terms of the Instruction Set Architecture (ISA), ARM processors operate under a RISC (Reduced Instruction Set Computing) architecture, while Intel processors function on a CISC (Complex Instruction Set Computing) architecture. RISC architectures, exemplified by ARM, uses a simpler and more standardized instructions compared to the more complex CISC architectures of Intel. ARM's instruction set is also more finely tuned for efficient task execution, resulting in a more streamlined array of instructions.
+   Between ARM processors and Intel processors, the register usage also varies - ARM processors use a narrower selection of general-purpose registers when compared to Intel processors. ARM assembly language often adopts register labels like R0, R1, etc., while Intel assembly language uses designations such as EAX, EBX, etc.
+Conventions surrounding register usage may diverge between ARM and Intel assembly languages.
+   Compared to Intel assembly, ARM assembly language extends support to a reduced set of addressing modes. Addressing modes in assembly language define how instructions specify the location of operands (data) in memory or registers. The prevalent use of load/store architecture in ARM assembly means operations occur predominantly between registers rather than directly accessing memory. In ARM assembly, the addressing modes available for accessing data from memory or specifying operands in instructions are fewer in number compared to Intel assembly. This limitation in addressing modes can influence the way programmers write code and perform memory operations in ARM assembly language.
+   ARM assembly and Intel assembly have different syntax, such as for instructions and directives. Additionally, nuances in comments and formatting conventions are also not the same. It's important to recognize that assembly code designed for Intel processors necessitates substantial modifications for seamless adaptation to ARM processors, given the distinct architectural and instructional disparities.
 
 **2. Convert the Intel 32-bit processor assembly code to ARM processor assembly code, and execute.**  
 $var4 = (var1+var2)*var3$
