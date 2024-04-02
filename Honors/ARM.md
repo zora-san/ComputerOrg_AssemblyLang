@@ -5,6 +5,29 @@ Perform the following tasks:
 1. Research and find out how different assembly language is for ARM processors compared to Intel processors.
 2. The following assembly code is written for an Intel 32-bit processor. Convert the code for the ARM processor, and execute it.
 3. Based on your research, will you be able to quantify the efficiency of running an assembly code on Intel & ARM processors?
+Assembly language for ARM processors differs from that of Intel processors in several ways, including instruction set architecture, register usage, addressing modes, and syntax. Here are some key differences:
+
+**Instruction Set Architecture (ISA):**
+- ARM processors use a RISC (Reduced Instruction Set Computing) architecture, while Intel processors use a CISC (Complex Instruction Set Computing) architecture.
+- ARM instructions are typically simpler and more uniform compared to Intel instructions.
+
+**Register Usage:**
+- ARM processors have a smaller number of general-purpose registers compared to Intel processors.
+- ARM assembly language often uses register names like R0, R1, etc., while Intel assembly language uses names like EAX, EBX, etc.
+
+**Addressing Modes:**
+- ARM assembly language supports fewer addressing modes compared to Intel assembly language.
+- ARM assembly often uses load/store architecture, where operations are performed between registers rather than directly on memory.
+
+**Syntax:**
+- ARM assembly language syntax differs from Intel assembly language syntax. For example, instructions and directives may have different names and formats.
+
+To convert assembly code from Intel to ARM and execute it, you would need to rewrite the code using ARM assembly language syntax and adhere to ARM's instruction set architecture. Once the code is written, you can assemble and execute it on an ARM-based platform, such as a Raspberry Pi or an ARM development board.
+
+Regarding quantifying the efficiency of running assembly code on Intel and ARM processors, it's challenging to make a direct comparison due to the differences in architecture, performance characteristics, and optimization strategies employed by each processor. The efficiency of running assembly code depends on various factors, including the specific instructions used, the optimization level of the compiler/assembler, the memory hierarchy, and the workload characteristics.
+
+In general, both Intel and ARM processors can execute assembly code efficiently when properly optimized. However, the performance characteristics and optimization techniques may differ between the two architectures. Benchmarking and profiling are common techniques used to evaluate the performance of assembly code on different processors.
+
 
 $var4 = (var1+var2)*var3$
 
