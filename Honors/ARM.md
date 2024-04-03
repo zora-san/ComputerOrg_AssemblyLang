@@ -73,8 +73,7 @@ var4:    .skip 4       @ reserve 4 bytes for var4
 ```
 **3. Based on your research, will you be able to quantify the efficiency of running an assembly code on Intel & ARM processors?**
 
-Quantifying the efficiency of running assembly code on Intel and ARM processors can be challenging due to several factors:
-
+Quantifying the efficiency of running assembly code on Intel and ARM processors can be challenging due to several factors: 
 1. **Architecture Differences**:
    - Intel and ARM processors have different architectures, including instruction set architecture (ISA), register layout, and pipeline design.
    - The efficiency of running assembly code depends on how well the code utilizes the specific features and optimizations of each architecture.
