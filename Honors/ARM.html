@@ -1,0 +1,92 @@
+<h1 id="lab-assembly-language-for-arm-processors">Lab: Assembly language for ARM processors</h1>
+<h2 id="tasks">Tasks</h2>
+<p>Perform the following tasks:  </p>
+<ol>
+<li>Research and find out how different assembly language is for ARM processors compared to Intel processors.</li>
+<li>The following assembly code is written for an Intel 32-bit processor. Convert the code for the ARM processor, and execute it.</li>
+<li>Based on your research, will you be able to quantify the efficiency of running an assembly code on Intel &amp; ARM processors?</li>
+</ol>
+<p><strong>1. How different is assembly language for ARM processors compared to Intel processors?</strong></p>
+<p>The assembly language utilized for ARM processors stands in great contrast to the assembly language of Intel processors. We will dive into the variations across instruction set architecture (ISA), syntax, register usage, and addressing modes.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;In terms of the Instruction Set Architecture (ISA), ARM processors operate under a RISC (Reduced Instruction Set Computing) architecture, while Intel processors function on a CISC (Complex Instruction Set Computing) architecture. RISC architectures, exemplified by ARM, uses a simpler and more standardized instructions compared to the more complex CISC architectures of Intel. ARM&#39;s instruction set is also more finely tuned for efficient task execution, resulting in a more streamlined array of instructions.<br>&nbsp;&nbsp;&nbsp;&nbsp;ARM assembly and Intel assembly have different syntax, such as for instructions and directives. Additionally, nuances in comments and formatting conventions are also not the same. It&#39;s important to recognize that assembly code designed for Intel processors necessitates substantial modifications for seamless adaptation to ARM processors, given the distinct architectural and instructional disparities. Between ARM processors and Intel processors, the register usage also varies - ARM processors use a narrower selection of general-purpose registers when compared to Intel processors. ARM assembly language often adopts register labels like R0, R1, etc., while Intel assembly language uses designations such as EAX, EBX, etc.<br>&nbsp;&nbsp;&nbsp;&nbsp;Compared to Intel assembly, ARM assembly language extends support to a reduced set of addressing modes. Addressing modes in assembly language define how instructions specify the location of operands (data) in memory or registers. The prevalent use of load/store architecture in ARM assembly means operations occur predominantly between registers rather than directly accessing memory. In ARM assembly, the addressing modes available for accessing data from memory or specifying operands in instructions are fewer in number compared to Intel assembly. This limitation in addressing modes can influence the way programmers write code and perform memory operations in ARM assembly language.  </p>
+<p><strong>2. Convert the Intel 32-bit processor assembly code to ARM processor assembly code, and execute.</strong><br>$var4 = (var1+var2)*var3$</p>
+<pre><code class="lang-assembly"><span class="hljs-meta">section</span> .text
+    <span class="hljs-meta">global</span> _start
+<span class="hljs-symbol">
+_start:</span>
+    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>,[var1]
+    <span class="hljs-keyword">add</span> <span class="hljs-built_in">eax</span>,[var2]
+    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">dl</span>,[var3]
+    <span class="hljs-keyword">mul</span> <span class="hljs-built_in">dl</span>
+    <span class="hljs-keyword">mov</span> [var4],<span class="hljs-built_in">eax</span>
+
+    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>,<span class="hljs-number">1</span>
+    <span class="hljs-keyword">int</span> <span class="hljs-number">0x80</span>
+
+<span class="hljs-meta">section</span> .data
+    var1 <span class="hljs-built_in">DD</span> <span class="hljs-number">5</span> <span class="hljs-comment">; var1 is assigned 5</span>
+    var2 <span class="hljs-built_in">DD</span> <span class="hljs-number">2</span> <span class="hljs-comment">; var2 is assigned 2</span>
+    var3 <span class="hljs-built_in">DD</span> <span class="hljs-number">3</span> <span class="hljs-comment">; var3 is assigned 3</span>
+
+<span class="hljs-meta">segment</span> .bss
+    var4 <span class="hljs-built_in">resb</span> <span class="hljs-number">1</span>
+</code></pre>
+<p><strong>Share the source code and write down the commands used to make the source code executable.</strong></p>
+<pre><code class="lang-assembly"><span class="hljs-meta">.section</span> .text
+<span class="hljs-meta">    .global</span> _start
+<span class="hljs-symbol">
+_start:</span>
+    ldr <span class="hljs-built_in">r1</span>, =var1      @ load var1 <span class="hljs-keyword">into</span> <span class="hljs-built_in">r1</span>
+    ldr <span class="hljs-built_in">r2</span>, [<span class="hljs-built_in">r1</span>]        @ load the value <span class="hljs-meta">at</span> memory location var1 <span class="hljs-keyword">into</span> <span class="hljs-built_in">r2</span>
+    ldr <span class="hljs-built_in">r3</span>, =var2      @ load var2 <span class="hljs-keyword">into</span> <span class="hljs-built_in">r3</span>
+    ldr <span class="hljs-built_in">r4</span>, [<span class="hljs-built_in">r3</span>]        @ load the value <span class="hljs-meta">at</span> memory location var2 <span class="hljs-keyword">into</span> <span class="hljs-built_in">r4</span>
+    <span class="hljs-keyword">add</span> <span class="hljs-built_in">r5</span>, <span class="hljs-built_in">r2</span>, <span class="hljs-built_in">r4</span>      @ <span class="hljs-keyword">add</span> var1 <span class="hljs-keyword">and</span> var2, result <span class="hljs-keyword">in</span> <span class="hljs-built_in">r5</span>
+
+    ldrb <span class="hljs-built_in">r6</span>, =var3     @ load var3 <span class="hljs-keyword">into</span> <span class="hljs-built_in">r6</span> (using <span class="hljs-built_in">byte</span> load)
+    ldrb <span class="hljs-built_in">r7</span>, [<span class="hljs-built_in">r6</span>]       @ load the value <span class="hljs-meta">at</span> memory location var3 <span class="hljs-keyword">into</span> <span class="hljs-built_in">r7</span> (using <span class="hljs-built_in">byte</span> load)
+    <span class="hljs-keyword">mul</span> <span class="hljs-built_in">r5</span>, <span class="hljs-built_in">r5</span>, <span class="hljs-built_in">r7</span>      @ multiply var1+var2 by var3
+
+    ldr <span class="hljs-built_in">r8</span>, =var4      @ load var4 <span class="hljs-keyword">into</span> <span class="hljs-built_in">r8</span>
+    <span class="hljs-keyword">str</span> <span class="hljs-built_in">r5</span>, [<span class="hljs-built_in">r8</span>]        @ store the result <span class="hljs-keyword">into</span> memory location var4
+
+    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">r7</span>, #<span class="hljs-number">1</span>          @ prepare to make an exit <span class="hljs-keyword">syscall</span>
+    swi <span class="hljs-number">0x0</span>             @ exit program
+<span class="hljs-meta">
+.section</span> .data
+<span class="hljs-symbol">var1:</span>    .word <span class="hljs-number">5</span>       @ var1 is assigned <span class="hljs-number">5</span>
+<span class="hljs-symbol">var2:</span>    .word <span class="hljs-number">2</span>       @ var2 is assigned <span class="hljs-number">2</span>
+<span class="hljs-symbol">var3:</span>    .byte <span class="hljs-number">3</span>       @ var3 is assigned <span class="hljs-number">3</span>
+<span class="hljs-meta">
+.section</span> .bss
+<span class="hljs-symbol">var4:</span>    .skip <span class="hljs-number">4</span>       @ reserve <span class="hljs-number">4</span> bytes for var4
+</code></pre>
+<p><strong>3. Based on your research, will you be able to quantify the efficiency of running an assembly code on Intel &amp; ARM processors?</strong></p>
+<p>Quantifying the efficiency of running assembly code on Intel and ARM processors can be challenging due to several factors: </p>
+<ol>
+<li><p><strong>Architecture Differences</strong>:</p>
+<ul>
+<li>Intel and ARM processors have different architectures, including instruction set architecture (ISA), register layout, and pipeline design.</li>
+<li>The efficiency of running assembly code depends on how well the code utilizes the specific features and optimizations of each architecture.</li>
+</ul>
+</li>
+<li><p><strong>Performance Characteristics</strong>:</p>
+<ul>
+<li>Intel processors are often designed for high-performance computing tasks and may have higher clock speeds, larger cache sizes, and more advanced instruction sets.</li>
+<li>ARM processors, on the other hand, are commonly used in mobile devices, IoT devices, and embedded systems, prioritizing power efficiency over raw performance.</li>
+</ul>
+</li>
+<li><p><strong>Optimization Strategies</strong>:</p>
+<ul>
+<li>Assembly code can be optimized differently for Intel and ARM processors to take advantage of their respective architectures.</li>
+<li>Optimization techniques may include instruction selection, register allocation, loop unrolling, and memory access optimizations tailored to each processor architecture.</li>
+</ul>
+</li>
+<li><p><strong>Benchmarking and Profiling</strong>:</p>
+<ul>
+<li>Benchmarking tools can be used to measure the performance of assembly code on Intel and ARM processors under different workloads.</li>
+<li>Profiling tools can provide insights into the bottlenecks and performance hotspots in the code execution.</li>
+</ul>
+</li>
+</ol>
+<p>In conclusion, while it is possible to evaluate the performance of assembly code on Intel and ARM processors using benchmarking and profiling techniques, the efficiency can vary significantly depending on the specific workload, optimization strategies, and architecture characteristics. Direct quantification of efficiency may not always be straightforward and may require careful analysis and experimentation.</p>
+<p><strong>Create and share a video that explains the process of assembling, linking, running, and debugging the source code.</strong></p>
