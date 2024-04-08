@@ -1,4 +1,4 @@
-#Week10: Loops and arrays
+# Week 10: Loops and arrays
 
 ## Task
 
