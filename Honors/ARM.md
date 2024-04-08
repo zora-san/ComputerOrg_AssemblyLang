@@ -73,37 +73,35 @@ var4:    .skip 4       @ reserve 4 bytes for var4
 ```
 **3. Based on your research, will you be able to quantify the efficiency of running an assembly code on Intel & ARM processors?**
 
-Quantifying the efficiency of running assembly code on Intel and ARM processors can be challenging due to several factors: 
-1. **Architecture Differences**:
-   - Intel and ARM processors have different architectures, including instruction set architecture (ISA), register layout, and pipeline design.
-   - The efficiency of running assembly code depends on how well the code utilizes the specific features and optimizations of each architecture.
+- **Architecture Differences**:
+  - Intel and ARM processors have distinct architectures, including differences in instruction set architecture (ISA), register layout, and pipeline design.
+  - Efficiency depends on how well the code utilizes specific features and optimizations of each architecture.
 
-2. **Performance Characteristics**:
-   - Intel processors are often designed for high-performance computing tasks and may have higher clock speeds, larger cache sizes, and more advanced instruction sets.
-   - ARM processors, on the other hand, are commonly used in mobile devices, IoT devices, and embedded systems, prioritizing power efficiency over raw performance.
+- **Performance Characteristics**:
+  - Intel processors are often designed for high-performance computing tasks, boasting higher clock speeds, larger cache sizes, and more advanced instruction sets.
+  - ARM processors prioritize power efficiency and are commonly used in mobile and embedded systems.
 
-3. **Optimization Strategies**:
-   - Assembly code can be optimized differently for Intel and ARM processors to take advantage of their respective architectures.
-   - Optimization techniques may include instruction selection, register allocation, loop unrolling, and memory access optimizations tailored to each processor architecture.
+- **Optimization Strategies**:
+  - Assembly code can be optimized differently for Intel and ARM processors to leverage their respective strengths.
+  - Techniques include instruction selection, register allocation, loop unrolling, and memory access optimizations.
 
-4. **Benchmarking and Profiling**:
-   - Benchmarking tools can be used to measure the performance of assembly code on Intel and ARM processors under different workloads.
-   - Profiling tools can provide insights into the bottlenecks and performance hotspots in the code execution.
+- **Benchmarking and Profiling**:
+  - Benchmarking and profiling tools are essential for measuring code execution under different workloads and identifying performance bottlenecks.
+  
+- **Instruction Set Differences**:
+  - ARM instructions are typically fixed-length (32 bits) and often operate directly on registers, while Intel instructions can vary in length and may require more memory accesses.
+  - ARM's load-store architecture offers more predictable memory access patterns than Intel's more complex schemes.
+  
+- **Compiler Optimizations**:
+  - Different compilers may produce varying results, and optimization flags can significantly impact performance.
+  - Considerations such as data types and alignment requirements can affect efficiency, particularly regarding memory access.
 
-In conclusion, while it is possible to evaluate the performance of assembly code on Intel and ARM processors using benchmarking and profiling techniques, the efficiency can vary significantly depending on the specific workload, optimization strategies, and architecture characteristics. Direct quantification of efficiency may not always be straightforward and may require careful analysis and experimentation.
+- **System Calls**:
+  - System call overheads may differ between ARM and Intel architectures, depending on the method used and the OS's handling of system calls.
 
-Instruction Set Differences: ARM and Intel processors have different instruction sets. While ARM instructions are typically fixed length (32 bits), Intel instructions can vary in length. ARM instructions often operate directly on registers, while Intel instructions may require more memory accesses.
+- **Conclusion**:
+  - Assessing efficiency comprehensively requires considering various factors such as architecture differences, optimization strategies, compiler behavior, memory access patterns, and system call overheads.
+  - Direct quantification may be complex and may vary across different scenarios and hardware configurations.
 
-Memory Access Patterns: Both ARM and Intel processors have different memory access characteristics. ARM's load-store architecture may result in more predictable memory access patterns, which can be advantageous in some scenarios. Intel processors may have more complex memory access schemes.
-
-Pipeline and Microarchitecture: The efficiency of code execution depends heavily on the pipeline and microarchitecture of the specific processor. Different processors within the ARM and Intel families may have varying pipeline depths, execution units, and optimization capabilities.
-
-Compiler Optimizations: The efficiency of the code can also be influenced by the compiler and its ability to optimize code for the target architecture. Different compilers may produce different results, and optimization flags can significantly impact performance.
-
-Data Types and Alignment: ARM and Intel processors may have different requirements regarding data types and alignment. Misaligned memory accesses can incur performance penalties, especially on Intel processors.
-
-System Calls: The method of making system calls (swi on ARM vs. int on Intel) can have different overheads depending on the operating system and its handling of system calls.
-
-Quantifying the efficiency difference between running these code snippets on ARM and Intel processors would require benchmarking on specific hardware using representative workloads. Additionally, considering the dynamic nature of processor architectures and the potential for optimization at various levels (hardware, compiler, etc.), the efficiency comparison may vary across different scenarios.
 
 **Create and share a video that explains the process of assembling, linking, running, and debugging the source code.**
