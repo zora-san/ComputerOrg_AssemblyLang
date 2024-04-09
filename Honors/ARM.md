@@ -47,13 +47,13 @@ segment .bss
     .global _start
 
 _start:
-    ldr r1, =var1      @ load var1 into r1
-    ldr r2, [r1]        @ load the value at memory location var1 into r2
+    ldr r1, =var1      @ load var1 into r1 (ldr = load register)
+    ldr r2, [r1]        @ load the value at memory location var1 into r2 (use brackets to access mem location)
     ldr r3, =var2      @ load var2 into r3
     ldr r4, [r3]        @ load the value at memory location var2 into r4
-    add r5, r2, r4      @ add var1 and var2, result in r5
+    add r5, r2, r4      @ add var1 and var2, result in r5 (result first, additions after)
     
-    ldrb r6, =var3     @ load var3 into r6 (using byte load)
+    ldrb r6, =var3     @ load var3 into r6 (using load register byte, specifically for loading a single byte from                         @ memory to register)
     ldrb r7, [r6]       @ load the value at memory location var3 into r7 (using byte load)
     mul r5, r5, r7      @ multiply var1+var2 by var3
     
@@ -80,6 +80,8 @@ var4:    .skip 4       @ reserve 4 bytes for var4
 - **Performance Characteristics**:
   - Intel processors are often designed for high-performance computing tasks, boasting higher clock speeds, larger cache sizes, and more advanced instruction sets.
   - ARM processors prioritize power efficiency and are commonly used in mobile and embedded systems.
+  - ARM instructions are typically fixed-length (32 bits) and often operate directly on registers, while Intel instructions can vary in length and may require more memory accesses.
+  - ARM's load-store architecture offers more predictable memory access patterns than Intel's more complex schemes.
 
 - **Optimization Strategies**:
   - Assembly code can be optimized differently for Intel and ARM processors to leverage their respective strengths.
@@ -87,10 +89,6 @@ var4:    .skip 4       @ reserve 4 bytes for var4
 
 - **Benchmarking and Profiling**:
   - Benchmarking and profiling tools are essential for measuring code execution under different workloads and identifying performance bottlenecks.
-  
-- **Instruction Set Differences**:
-  - ARM instructions are typically fixed-length (32 bits) and often operate directly on registers, while Intel instructions can vary in length and may require more memory accesses.
-  - ARM's load-store architecture offers more predictable memory access patterns than Intel's more complex schemes.
   
 - **Compiler Optimizations**:
   - Different compilers may produce varying results, and optimization flags can significantly impact performance.
