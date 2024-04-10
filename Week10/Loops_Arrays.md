@@ -42,4 +42,4 @@ segment .bss
         fib resb 4      ; reserve 4 bytes for fib variable
 ```
 
-3. Define the array with length 3 and, type integer, find the largest element in the array. Use `gdb` to debug the code and verify that the code is working well and as per the requirement. 
+3. Define the array with length 4 and, type integer, find the largest element in the array. Use gdb to debug the code and verify that the code is working well and as per the requirement. 
