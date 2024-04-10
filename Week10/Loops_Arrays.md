@@ -43,7 +43,7 @@ segment .bss
 ```
 
 3. Define the array with length 4 and, type integer, find the largest element in the array. Use gdb to debug the code and verify that the code is working well and as per the requirement.
-4. ```assembly
+```assembly
 section .text
         global _start
 
