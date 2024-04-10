@@ -44,33 +44,33 @@ segment .bss
 
 3. Define the array with length 4 and, type integer, find the largest element in the array. Use gdb to debug the code and verify that the code is working well and as per the requirement.
 4. ```assembly
-section .data
-    array dd 10, 30, 20, 5     ; Array of integers with length 4
-
 section .text
-    global _start
+        global _start
 
 _start:
-    mov eax, [array]           ; Load the first element of the array into eax
-    mov ebx, eax               ; Move the value of the first element to ebx (initial largest value)
-    mov ecx, 3                 ; Counter for remaining elements (length of array - 1)
+        mov ebx,array           ;load address of array into ebx
+        mov eax,[ebx]           ;load first element of array into eax
+        mov ecx,3               ;counter for remaining elements (0-2, len of arr-1)
 
 compare_loop:
-    add eax, 4                 ; Move to the next element of the array
-    cmp eax, [array + 16]      ; Compare the current element with the last element of the array
-    jg update_largest          ; Jump if the current element is greater than the largest so far
-    mov eax, [eax]             ; Move the value of the current element to eax
-    loop compare_loop          ; Repeat the loop until all elements are compared
+        add ebx,4               ;move to next element of array
+        cmp eax,[ebx]           ;compare current element w/next element
+        jge not_greater         ;jump if next element is not greater than current >
+        mov eax,[ebx]           ;update largest element if next element is greater
+
+not_greater:
+        loop compare_loop       ;repeat loop until all elements are compared
 
 update_largest:
-    mov [largest], bl          ; Store the largest element in a byte-sized memory location
+        mov [largest],eax       ;store largest element in mem location "largest"
 
-    ; Exit the program
-    mov eax, 1
-    xor ebx, ebx
-    int 0x80
+        mov eax,1
+        int 0x80
 
-section .bss
-    largest resb 1              ; Reserve 1 byte for storing the largest element (byte size)
+section .data 
+        array dd 32, 12, 98, 3
+
+segment .bss
+        largest resb 4
 ```
 
