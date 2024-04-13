@@ -1,0 +1,1 @@
+gdb -x gdb_commands.txt ./$1
