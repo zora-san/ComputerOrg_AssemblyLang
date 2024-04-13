@@ -49,21 +49,24 @@ section .text
 
 _start:
         mov ebx,array           ;load address of array into ebx
-        mov eax,[ebx]           ;load first element of array into eax
+        mov eax,[ebx]           ;load first element of array into eax, current largest element
         mov ecx,3               ;counter for remaining elements (0-2, len of arr-1)
+        jmp compare_loop        
 
 compare_loop:
         add ebx,4               ;move to next element of array
         cmp eax,[ebx]           ;compare current element w/next element
-        jge not_greater         ;jump if next element is not greater than current >
+        jge not_greater         ;jump if next element is not greater than current 
         mov eax,[ebx]           ;update largest element if next element is greater
+        jmp update_largest
 
 not_greater:
         loop compare_loop       ;repeat loop until all elements are compared
 
 update_largest:
         mov [largest],eax       ;store largest element in mem location "largest"
-
+        jmp exit
+exit:
         mov eax,1
         int 0x80
 
@@ -73,4 +76,7 @@ section .data
 segment .bss
         largest resb 4
 ```
+What were your challenges in performing the lab (from design to the implementation phases)?
+My main challenge is navigating through different procedures. Similar to coding in any language, I make to have a some kind of return or jump in every procedure. This lab was helpful to understanding arrays and again reinforcing the fact that we cannot move from memory location to memory location, but only from one memory location to register, or register to register.
 
+Now, I feel more comfortable using ecx + loop in conjunction as a counter! :)
