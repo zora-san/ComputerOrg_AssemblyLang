@@ -27,3 +27,5 @@ section .data
 
 segment .bss
         result resb 1           ;uninitialized variable to store final value
+
+;Thanks for being awesome, Professor Khan! :)
