@@ -12,7 +12,7 @@ _start:
         jmp multiply            ;jmp to multiply procedure
 
 multiply:                        
-        imul eax,ecx            ;multiply ecx with 6, store in eax 
+        imul eax,ecx            ;multiply ecx with eax (initially 6), store in eax 
         dec ecx                 ;decrease ecx
         jnz multiply            ;loop back if not zero
         jmp exit                ;when zero, exit
