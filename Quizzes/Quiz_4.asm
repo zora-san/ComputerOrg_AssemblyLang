@@ -1,6 +1,7 @@
 ; Assign three integers to the variables x, y, and z and pass on the function name of your choice. 
 ; The function task is to add three variables and assign the result to the 'result' variable.
 ; Make sure the function returns the result variable and deallocates the memory used by the function when it returns
+
 section .text
         global _start
 
