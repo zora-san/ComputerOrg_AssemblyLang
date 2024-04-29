@@ -16,11 +16,9 @@ _foobar:                                ;purpose is to add 3 variables
         push ebp                        ;preserve ebp across calls
         mov ebp,esp                     ;point ebp to stack
 
-        mov eax, DWORD[ebp+16]          ;move x to eax
-        mov edx, DWORD[ebp+12]          ;move y to edx
-        lea eax, DWORD[eax+edx]         ;add x and y, store in eax (15)
-        mov edx, DWORD[ebp+8]           ;move z to edx
-        lea eax, DWORD[eax+edx]         ;add z to x and y (24), store in eax
+        mov eax, DWORD[ebp+16]          ;move x to eax (7)
+        add eax, DWORD[ebp+12]          ;add y to edx (15)
+        add eax, DWORD[ebp+8]           ;add z to edx (24)
         mov [result],eax                ;store in uninitialized variable result
 
         leave                           ;remove local var from stack, reg esp points to ret address, ebp returns to initial value
