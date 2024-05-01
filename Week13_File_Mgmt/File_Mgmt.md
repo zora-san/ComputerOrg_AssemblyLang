@@ -51,5 +51,13 @@ _start:
 segment .bss
         fd_out resb 1
 ```
+```txt
+To be, or not to be, that is the question.
 
+A fool thinks himself to be wise, but a wise man knows himself to be a fool
+
+Better three hours too soon than a minute too late.
+
+No legacy is so rich as honesty.
+```
 ## What were your challenges in performing the lab (from design to the implementation phases)?
