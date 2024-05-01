@@ -14,45 +14,45 @@ section .text
 
 _start:
         mov eax,8               ;sys_creat
-        mov ebx,filename
-        mov ecx,0711o
-        int 0x80
+        mov ebx,filename        ;filename
+        mov ecx,0711o           ;rwxr-x--x
+        int 0x80                ;syscall
 
         mov eax,5               ;sys_open
-        mov ebx,filename
+        mov ebx,filename        ;filename
         mov ecx,1               ;write only
-        mov edx,0777o
-        int 0x80
+        mov edx,0777o           ;rwxrwxrwx
+        int 0x80                ;syscall
 
-        mov [fd_out],eax
+        mov [fd_out],eax        ;save file descriptor
 
         mov eax,4               ;sys_write
-        mov ebx,[fd_out]
-        mov ecx,contents
-        mov edx,len
-        int 0x80
+        mov ebx,[fd_out]        ;file descriptor
+        mov ecx,contents        ;buffer
+        mov edx,len             ;length of buffer
+        int 0x80                ;syscall
 
         mov eax,19              ;sys_lseek
-        mov ebx,[fd_out]
-        mov ecx,0
-        mov edx,2
-        int 0x80
+        mov ebx,[fd_out]        ;file descriptor
+        mov ecx,0               ;offset 
+        mov edx,2               ;SEEK_END
+        int 0x80                ;syscall
 
-        mov eax,4
-        mov ebx,[fd_out]
-        mov ecx,contents1
-        mov edx,len1
-        int 0x80        
+        mov eax,4               ;sys_write
+        mov ebx,[fd_out]        ;file descriptor
+        mov ecx,contents1       ;buffer
+        mov edx,len1            ;length of buffer
+        int 0x80                ;syscall
 
         mov eax,6               ;sys_close
-        mov ebx,[fd_out]
-        int 0x80
+        mov ebx,[fd_out]        ;file descriptor
+        int 0x80                ;syscall
 
-        mov eax,1
-        int 0x80
+        mov eax,1               ;sys_exit
+        int 0x80                ;syscall
 
 segment .bss
-        fd_out resb 1
+        fd_out resb 1           ;file descriptor  
 ```
 ```txt
 To be, or not to be, that is the question.
@@ -64,4 +64,4 @@ Better three hours too soon than a minute too late.
 No legacy is so rich as honesty.
 ```
 ## What were your challenges in performing the lab (from design to the implementation phases)?
-The challenges that I had were related to remembering to save the file descriptor, and generally remembering the numbers as it relates to the system command.
+The challenges that I had were related to remembering to save the file descriptor, and generally memorizing the numbers as it relates to the system command.
