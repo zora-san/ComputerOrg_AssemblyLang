@@ -4,9 +4,9 @@
 ```assembly
 section .data
         filename db 'quotes.txt', 0h
-        contents db 'To be, or not to be, that is the question.',10,10,'A fool thinks himself to be wise, but a wise man knows himself to be a fool', 0h
+        contents db 'To be, or not to be, that is the question.',0xa,0xa,'A fool thinks himself to be wise, but a wise man knows himself to be a fool'
         len equ $ - contents
-        contents1 db 'Better three hours too soon than a minute too late.',10,10,'No legacy is so rich as honesty.',0h
+        contents1 db 0xa,0xa,'Better three hours too soon than a minute too late.',0xa,0xa,'No legacy is so rich as honesty.',0xa
         len1 equ $ - contents1
 
 section .text
@@ -14,38 +14,41 @@ section .text
 
 _start:
         mov eax,8               ;sys_creat
-        mov ebx,filename        ;filename
-        mov ecx,0711o           ;permissions
+        mov ebx,filename
+        mov ecx,0711o
         int 0x80
 
         mov eax,5               ;sys_open
-        mov ebx,filename        ;filename   
+        mov ebx,filename
         mov ecx,1               ;write only
-        mov edx,0777o           ;permissions
+        mov edx,0777o
         int 0x80
 
-        mov [fd_out],eax        ;save file descriptor
+        mov [fd_out],eax
 
         mov eax,4               ;sys_write
-        mov ebx,[fd_out]        ;file descriptor
-        mov ecx,contents        ;contents to write  
-        mov edx,len             ;length of contents
+        mov ebx,[fd_out]
+        mov ecx,contents
+        mov edx,len
         int 0x80
 
         mov eax,19              ;sys_lseek
-        mov ebx,[fd_out]        ;file descriptor
-        xor ecx,ecx             ;offset is 0
-        mov edx,2               ;seek_end
+        mov ebx,[fd_out]
+        mov ecx,0
+        mov edx,2
         int 0x80
 
-        mov eax,4               ;sys_write
-        mov ebx,[fd_out]        ;file descriptor 
-        mov ecx,contents1       ;contents to write
-        mov edx,len1            ;length of contents
-        int 0x80
+        mov eax,4
+        mov ebx,[fd_out]
+        mov ecx,contents1
+        mov edx,len1
+        int 0x80        
 
         mov eax,6               ;sys_close
-        mov ebx,[fd_out]        ;file descriptor
+        mov ebx,[fd_out]
+        int 0x80
+
+        mov eax,1
         int 0x80
 
 segment .bss
@@ -61,3 +64,4 @@ Better three hours too soon than a minute too late.
 No legacy is so rich as honesty.
 ```
 ## What were your challenges in performing the lab (from design to the implementation phases)?
+The challenges that I had were related to remembering to save the file descriptor, and generally remembering the numbers as it relates to the system command.
