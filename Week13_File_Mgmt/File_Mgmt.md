@@ -64,4 +64,4 @@ Better three hours too soon than a minute too late.
 No legacy is so rich as honesty.
 ```
 ## What were your challenges in performing the lab (from design to the implementation phases)?
-The challenges that I had were related to remembering to save the file descriptor, and generally memorizing the numbers as it relates to the system command.
+The challenges that I had were related to remembering to store the file descriptor returned by sys_open system call into the memory location labeled by fd_out, and generally memorizing the sys command numbers.
