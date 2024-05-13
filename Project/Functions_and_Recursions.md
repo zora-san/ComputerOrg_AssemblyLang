@@ -23,7 +23,7 @@ Write a function (count) to perform the following task.
 - Append the counter in an already created text file (counter_fun.txt).
 
 ```assembly
-; This is the function.asm file
+; function.asm 
 
 section .text
         global _start             
@@ -69,7 +69,7 @@ Use recursion to generate the same counter which you did above. [Check what is r
 - Append the counter in an already created text file (counter_rec.txt).
 
 ```assembly
-; This is the recursion.asm file
+; recursion.asm
 
 section .text
         global _start
