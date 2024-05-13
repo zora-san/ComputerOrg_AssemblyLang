@@ -101,7 +101,7 @@ end:
         ret             ; return from the function
 ```
 
-# Compare both the time and discuss which code (function or recursion) runs efficiently and why.
+## Compare both the time and discuss which code (function or recursion) runs efficiently and why.
 The difference in speed between the recursive and the function versions of the programs is due to the nature of recursion itself. Recursion involves a function calling itself, which means that for each recursive call, a new stack frame is created to store the function's local variables and return address. This process of creating and destroying stack frames takes time.
 
 ON the other hand, the counter function version of my program uses a loop to perform the same operation. Loops do not involve function calls, so no new stack frames are created. This makes loops faster than recursion in most cases.
