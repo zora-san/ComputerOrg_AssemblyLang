@@ -13,7 +13,23 @@ ld -m elf_i386 ./$1.o -o ./$1
 { time ./recursion; } >/dev/null 2>> counter_rec.txt
 { time ./function; } >/dev/null 2>> counter_fun.txt
 ```
+## Output to display
 
+- There should be two text files for this task. counter_fun.txt and counter_rec.txt
+- Each file should have a time command output and a counter.
+  
+## counter_fun.txt
+```
+real    0m0.001s
+user    0m0.001s
+sys     0m0.000s
+```
+## counter_rec.txt
+```
+real    0m0.011s
+user    0m0.007s
+sys     0m0.004s
+```
 ## function.asm 
 
 Write a function (count) to perform the following task.
@@ -43,23 +59,6 @@ exit:
         int 0x80
 ```
 
-#### Output to display
-
-- There should be two text files for this task. counter_fun.txt and counter_rec.txt
-- Each file should have a time command output and a counter.
-  
-## counter_fun.txt
-```
-real    0m0.001s
-user    0m0.001s
-sys     0m0.000s
-```
-## counter_rec.txt
-```
-real    0m0.011s
-user    0m0.007s
-sys     0m0.004s
-```
 ## recursion.asm
 
 Use recursion to generate the same counter which you did above. [Check what is recursion](https://en.wikipedia.org/wiki/Recursion_(computer_science)) 
@@ -104,6 +103,7 @@ end:
 
 # Compare both the time and discuss which code (function or recursion) runs efficiently and why.
 The difference in speed between the recursive and the function versions of the programs is due to the nature of recursion itself. Recursion involves a function calling itself, which means that for each recursive call, a new stack frame is created to store the function's local variables and return address. This process of creating and destroying stack frames takes time.
+
 ON the other hand, the counter function version of my program uses a loop to perform the same operation. Loops do not involve function calls, so no new stack frames are created. This makes loops faster than recursion in most cases.
 
 Generally speaking, recursion can provide a more elegant and simpler solution for certain problems, but it often comes with a performance cost compared to iterative solutions.
